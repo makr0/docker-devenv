@@ -14,7 +14,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y openssh-server \
                                                       curl
 
 # install nodejs
-curl -sL https://deb.nodesource.com/setup | bash - && apt-get install -y nodejs
+RUN curl -sL https://deb.nodesource.com/setup | bash - && DEBIAN_FRONTEND=noninteractive apt-get install -y nodejs
 
 # install composer and bower
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin/ --filename=composer
@@ -24,21 +24,21 @@ RUN npm install -g bower
 RUN mkdir /var/run/sshd
 
 # configure git
-git config --global color.ui auto; \
-  git config --global color.branch.current yellow reverse; \
-  git config --global color.branch.local yellow; \
-  git config --global color.branch.remote green; \
-  git config --global color.diff.meta yellow bold; \
-  git config --global color.diff.frag magenta bold; \
-  git config --global color.diff.old red bold; \
-  git config --global color.diff.new green bold; \
-  git config --global color.status.added yellow; \
-  git config --global color.status.changed green; \
-  git config --global color.status.untracked cyan; \
-  git config --global i18n.logoutputencoding UTF-8; \
-  git config --global i18n.commitencoding UTF-8; \
-  git config --global core.autocrlf input; \
-  git config --global push.default simple;
+RUN git config --global color.ui auto; \
+    git config --global color.branch.current yellow reverse; \
+    git config --global color.branch.local yellow; \
+    git config --global color.branch.remote green; \
+    git config --global color.diff.meta yellow bold; \
+    git config --global color.diff.frag magenta bold; \
+    git config --global color.diff.old red bold; \
+    git config --global color.diff.new green bold; \
+    git config --global color.status.added yellow; \
+    git config --global color.status.changed green; \
+    git config --global color.status.untracked cyan; \
+    git config --global i18n.logoutputencoding UTF-8; \
+    git config --global i18n.commitencoding UTF-8; \
+    git config --global core.autocrlf input; \
+    git config --global push.default simple;
 
 
 EXPOSE 22
