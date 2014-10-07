@@ -27,5 +27,6 @@ EXPOSE 80
 ENV APACHE_RUN_USER www-data
 ENV APACHE_RUN_GROUP www-data
 ENV APACHE_LOG_DIR /data/log/apache2
+ADD error_reporting.ini /etc/php5/apache2/conf.d/
 
 CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
