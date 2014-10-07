@@ -10,8 +10,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update -y
 # install php and modules needed in cli mode
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y openssh-server \
                                                       php5-curl php5-gd php5-cli \
-                                                      git \
-                                                      curl
+                                                      git curl vim
 
 # install nodejs
 RUN curl -sL https://deb.nodesource.com/setup | bash - && DEBIAN_FRONTEND=noninteractive apt-get install -y nodejs
@@ -38,8 +37,12 @@ RUN git config --global color.ui auto; \
     git config --global i18n.logoutputencoding UTF-8; \
     git config --global i18n.commitencoding UTF-8; \
     git config --global core.autocrlf input; \
-    git config --global push.default simple;
+    git config --global push.default simple; \
+    git config --global user.email "mdt@wegewerk.com"; \
+    git config --global user.name "mdt";
 
+ADD .bash_aliases /root/
 
 EXPOSE 22
-CMD ["/usr/sbin/sshd", "-D", "-f /config/ssh/sshd_config"]
+ENTRYPOINT ["/usr/sbin/sshd"]
+CMD ["-D", "-f", "/config/ssh/sshd_config"]
