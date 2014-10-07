@@ -14,7 +14,7 @@ MAINTAINER mdt <mdt@wegewerk.com>
 RUN DEBIAN_FRONTEND=noninteractive apt-get update -y \
  && DEBIAN_FRONTEND=noninteractive apt-get install -y apache2\
                                                       libapache2-mod-php5 \
-                                                      php5-gd
+                                                      php5-gd php5-curl
 RUN a2enmod rewrite
 
 # link sites-enabled from data-container (config)
