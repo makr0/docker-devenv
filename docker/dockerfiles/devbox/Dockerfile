@@ -10,14 +10,16 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update -y
 # install php and modules needed in cli mode
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y openssh-server \
                                                       php5-curl php5-gd php5-cli \
-                                                      git curl vim
+                                                      git curl vim mc ruby
+RUN locale-gen de_DE.UTF-8 && update-locale LANG=de_DE.UTF-8
 
 # install nodejs
 RUN curl -sL https://deb.nodesource.com/setup | bash - && DEBIAN_FRONTEND=noninteractive apt-get install -y nodejs
 
 # install composer and bower
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin/ --filename=composer
-RUN npm install -g bower
+RUN npm install -g bower grunt-cli
+RUN gem install sass
 
 # make sshd happy
 RUN mkdir /var/run/sshd

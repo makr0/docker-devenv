@@ -9,6 +9,7 @@ alias l='ls $LS_OPTIONS -lA'
 alias agi='apt-get install -y'
 alias acs='apt-cache search'
 alias agu='apt-get update'
+alias bower='bower --allow-root'
 
 ### git coloring stuff
 
