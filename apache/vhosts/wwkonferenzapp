@@ -1,0 +1,75 @@
+################################
+## Konferenz-Backend (Silex-App)
+######################## 
+
+<VirtualHost *:80>
+    ServerName backend.konferenz-app.loc.int
+    ServerAdmin webmaster@localhost
+
+    DocumentRoot /data/wwkonferenzapp/backend/web
+    <Directory /data/wwkonferenzapp/backend/web>
+        Options       Indexes +FollowSymLinks +Includes MultiViews
+        php_flag      safe_mode On
+        AllowOverride All
+        Order         allow,deny
+        Allow         from all
+    </Directory>
+
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+
+    # Possible values include: debug, info, notice, warn, error, crit,
+    # alert, emerg.
+    LogLevel warn
+
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+
+#################
+## Frontends
+################# 
+
+<VirtualHost *:80>
+    ServerName app.konferenz-app.loc.int
+    ServerAdmin webmaster@localhost
+
+    DocumentRoot /data/wwkonferenzapp/app/dev/
+    <Directory /data/wwkonferenzapp/app/dev>
+       Options       FollowSymLinks
+       AllowOverride All
+       Order         allow,deny
+       Allow         from all
+    </Directory>
+
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+
+    # Possible values include: debug, info, notice, warn, error, crit,
+    # alert, emerg.
+    LogLevel warn
+
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+
+################################
+## Pinnwand-Modul (Autonome Angular-App)
+########################
+<VirtualHost *:80>
+    ServerName pinnwand.konferenz-app.loc.int
+    ServerAdmin webmaster@localhost
+
+    DocumentRoot /data/wwkonferenzapp/pinnwand/dev
+    <Directory /data/wwkonferenzapp/pinnwand/dev>
+       Options       FollowSymLinks
+       AllowOverride All
+       Order         allow,deny
+       Allow         from all
+    </Directory>
+
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+
+    # Possible values include: debug, info, notice, warn, error, crit,
+    # alert, emerg.
+    LogLevel warn
+
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+
