@@ -44,7 +44,10 @@ RUN git config --global color.ui auto; \
     git config --global user.name "mdt";
 
 ADD .bash_aliases /root/
+ADD sshd_config /etc/ssh/sshd_config
+
+RUN mkdir /root/.ssh && chmod 600 /root/.ssh
+ADD authorized_keys /root/.ssh/
 
 EXPOSE 22
-ENTRYPOINT ["/usr/sbin/sshd"]
-CMD ["-D", "-f", "/config/ssh/sshd_config"]
+CMD ["/usr/sbin/sshd", "-D"]
