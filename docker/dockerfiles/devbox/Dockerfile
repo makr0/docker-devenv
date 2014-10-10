@@ -19,7 +19,7 @@ RUN curl -sL https://deb.nodesource.com/setup | bash - && DEBIAN_FRONTEND=nonint
 # install composer and bower
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin/ --filename=composer
 RUN npm install -g bower grunt-cli
-RUN gem install sass
+RUN gem install sass compass
 
 # make sshd happy
 RUN mkdir /var/run/sshd
