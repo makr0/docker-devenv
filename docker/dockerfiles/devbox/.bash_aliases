@@ -5,11 +5,15 @@ alias ls='ls $LS_OPTIONS'
 alias ll='ls $LS_OPTIONS -la'
 alias l='ls $LS_OPTIONS -lA'
 
-# Some more alias to avoid making mistakes:
 alias agi='apt-get install -y'
 alias acs='apt-cache search'
 alias agu='apt-get update'
 alias bower='bower --allow-root'
+alias gs='git status'
+alias ga='git add'
+alias gd='git diff'
+alias gcam='git commit -am'
+alias gcm='git commit -m'
 
 ### git coloring stuff
 

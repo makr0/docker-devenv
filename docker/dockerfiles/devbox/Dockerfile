@@ -10,7 +10,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update -y
 # install php and modules needed in cli mode
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y openssh-server \
                                                       php5-curl php5-gd php5-cli \
-                                                      git curl vim mc ruby
+                                                      git curl vim mc ruby ruby-dev build-essential
 RUN locale-gen de_DE.UTF-8 && update-locale LANG=de_DE.UTF-8
 
 # install nodejs
@@ -19,7 +19,9 @@ RUN curl -sL https://deb.nodesource.com/setup | bash - && DEBIAN_FRONTEND=nonint
 # install composer and bower
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin/ --filename=composer
 RUN npm install -g bower grunt-cli
-RUN gem install sass
+RUN gem install sass composer
+
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y gitk git-gui
 
 # install cordova and ionic
 RUN npm install -g cordova ionic
