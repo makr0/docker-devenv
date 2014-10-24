@@ -21,6 +21,9 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 RUN npm install -g bower grunt-cli
 RUN gem install sass
 
+# install cordova and ionic
+RUN npm install -g cordova ionic
+
 # make sshd happy
 RUN mkdir /var/run/sshd
 
