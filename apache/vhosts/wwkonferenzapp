@@ -1,6 +1,6 @@
 ################################
 ## Konferenz-Backend (Silex-App)
-######################## 
+########################
 
 <VirtualHost *:80>
     ServerName backend.konferenz-app.loc.int
@@ -27,14 +27,35 @@
 
 #################
 ## Frontends
-################# 
+#################
 
 <VirtualHost *:80>
     ServerName app.konferenz-app.loc.int
     ServerAdmin webmaster@localhost
 
-    DocumentRoot /data/wwkonferenzapp/app/dev/
-    <Directory /data/wwkonferenzapp/app/dev>
+    DocumentRoot /data/wwkonferenzapp/app/src/
+    <Directory /data/wwkonferenzapp/app/src>
+       Options       FollowSymLinks
+       AllowOverride All
+       Order         allow,deny
+       Allow         from all
+    </Directory>
+
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+
+    # Possible values include: debug, info, notice, warn, error, crit,
+    # alert, emerg.
+    LogLevel warn
+
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+<VirtualHost *:80>
+    ServerName dist.app.konferenz-app.loc.int
+    ServerAdmin webmaster@localhost
+
+    DocumentRoot /data/wwkonferenzapp/app/dist/
+    <Directory /data/wwkonferenzapp/app/dist>
        Options       FollowSymLinks
        AllowOverride All
        Order         allow,deny
@@ -76,3 +97,32 @@
     CustomLog ${APACHE_LOG_DIR}/access.log combined
 </VirtualHost>
 
+<VirtualHost *:80>
+    ServerName dist.pinnwand.konferenz-app.loc.int
+    ServerAdmin webmaster@localhost
+
+    DocumentRoot /data/wwkonferenzapp/pinnwand/dist
+    <Directory /data/wwkonferenzapp/pinnwand/dist>
+       Options       FollowSymLinks
+       AllowOverride All
+       Order         allow,deny
+       Allow         from all
+    </Directory>
+
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+
+    # Possible values include: debug, info, notice, warn, error, crit,
+    # alert, emerg.
+    LogLevel warn
+
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+
+# live urls
+##############
+# staging.pinnwand.igm040.wegewerk.org
+# staging.app.igm040.wegewerk.org
+# couchdb.konferenz-app.igm040.wegewerk.org
+# api.konferenz-app.igm040.wegewerk.org
+# staging.igm040.wegewerk.org

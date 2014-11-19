@@ -1,2 +1,5 @@
 #!/bin/sh
-docker start devbox webserver igmcouch samba-server
+./run-webserver.sh;
+./run-samba.sh;
+./run-devbox.sh;
+./run-couchdb.sh;
