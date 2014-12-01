@@ -1,0 +1,97 @@
+#########################################
+## Konferenz-Backend ind API (Silex-App)
+#########################################
+
+<VirtualHost 78.47.112.166:80>
+    ServerName staging.igm040.wegewerk.org
+    RewriteEngine On
+    RewriteRule ^(/.*)?$ https://staging.igm040.wegewerk.org/$1  [L,R]
+    DocumentRoot /data/wwkonferenzapp/app/src/
+</VirtualHost>
+
+<VirtualHost *:443>
+    ServerName staging.app.igm040.wegewerk.org
+    ServerAdmin webmaster@localhost
+
+    # Backend
+    Alias /api/ /data/wwkonferenzapp/backend/web/
+
+    DocumentRoot /data/wwkonferenzapp/backend/web
+    <Directory /data/wwkonferenzapp/backend/web>
+        Options       Indexes +FollowSymLinks +Includes MultiViews
+        php_flag      safe_mode On
+        AllowOverride All
+        Order         allow,deny
+        Allow         from all
+    </Directory>
+
+    #Frontend (dev)
+    Alias /app/ /data/wwkonferenzapp/app/src/
+    <Directory /data/wwkonferenzapp/app/src>
+       Options       FollowSymLinks
+       AllowOverride All
+       Order         allow,deny
+       Allow         from all
+    </Directory>
+
+    #Frontend (dist)
+    Alias /app_dist/ /data/wwkonferenzapp/app/dist/
+    <Directory /data/wwkonferenzapp/app/dist>
+       Options       FollowSymLinks
+       AllowOverride All
+       Order         allow,deny
+       Allow         from all
+    </Directory>
+
+    #Pinnwand
+    Alias /pinnwand/ /data/wwkonferenzapp/pinnwand/dev/
+    <Directory /data/wwkonferenzapp/pinnwand/dev>
+       Options       FollowSymLinks
+       AllowOverride All
+       Order         allow,deny
+       Allow         from all
+    </Directory>
+
+    #Pinnwand (dist)
+    Alias /pinnwand_dist/ /data/wwkonferenzapp/pinnwand/dist/
+    <Directory /data/wwkonferenzapp/pinnwand/dev>
+       Options       FollowSymLinks
+       AllowOverride All
+       Order         allow,deny
+       Allow         from all
+    </Directory>
+
+    #CouchDB-Proxy
+
+    <Location /db/_utils>
+        AuthType Basic
+        AuthName "CouchDB admin area"
+        AuthUserFile /config/apache/htpasswd_couchdb
+        Require valid-user
+    </Location>
+
+    AllowEncodedSlashes On
+    ProxyRequests Off
+    KeepAlive Off
+    ProxyPass /db/ http://127.0.0.1:5984/ nocanon
+    ProxyPassReverse /db/ http://127.0.0.1:5984/
+
+
+
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+
+    # Possible values include: debug, info, notice, warn, error, crit,
+    # alert, emerg.
+    LogLevel warn
+
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+
+# live urls
+##############
+# staging.pinnwand.igm040.wegewerk.org
+# staging.app.igm040.wegewerk.org
+# couchdb.konferenz-app.igm040.wegewerk.org
+# api.konferenz-app.igm040.wegewerk.org
+# staging.igm040.wegewerk.org

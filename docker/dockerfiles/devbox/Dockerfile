@@ -25,6 +25,10 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y gitk git-gui
 
 # install cordova and ionic
 RUN npm install -g cordova ionic
+
+# install mosh (the Mobile SHell)
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y mosh
+
 # modify yeoman to run as root
 sed -i 's~rootCheck();~// rootCheck();~g' /usr/lib/node_modules/yo/cli.js
 
