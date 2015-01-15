@@ -119,6 +119,32 @@
     CustomLog ${APACHE_LOG_DIR}/access.log combined
 </VirtualHost>
 
+#################
+## Doku
+#################
+
+<VirtualHost *:80>
+    ServerName doc.konferenz-app.loc.int
+    ServerAdmin webmaster@localhost
+
+    DocumentRoot /data/wwkonferenzapp/app/doc/
+    <Directory /data/wwkonferenzapp/app/doc>
+       Options       FollowSymLinks
+       AllowOverride All
+       Order         allow,deny
+       Allow         from all
+    </Directory>
+
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+
+    # Possible values include: debug, info, notice, warn, error, crit,
+    # alert, emerg.
+    LogLevel warn
+
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+
 # live urls
 ##############
 # staging.pinnwand.igm040.wegewerk.org
