@@ -11,6 +11,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y openssh-server \
 RUN curl -sL https://deb.nodesource.com/setup | bash - && DEBIAN_FRONTEND=noninteractive apt-get install -y nodejs
 
 # install phantomjs
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y bzip2
 RUN npm install -g phantomjs
 
 RUN locale-gen de_DE.UTF-8 && update-locale LANG=de_DE.UTF-8
