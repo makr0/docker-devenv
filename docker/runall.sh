@@ -4,4 +4,5 @@
 ./run-samba.sh;
 ./run-devbox.sh;
 ./run-couchdb.sh;
-./run-babelext_box.sh;
+#./run-babelext_box.sh;
+./run-ionicdev.sh

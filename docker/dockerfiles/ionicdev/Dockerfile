@@ -9,7 +9,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update -y
 
 # install php and modules needed in cli mode
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y openssh-server \
-                                                      gitk git-gui git
+                                                      gitk git-gui git \
                                                       curl vim mc ruby ruby-dev build-essential
 RUN locale-gen de_DE.UTF-8 && update-locale LANG=de_DE.UTF-8
 
@@ -24,7 +24,7 @@ RUN gem install sass compass
 RUN npm install -g cordova ionic
 
 # modify yeoman to run as root
-sed -i 's~rootCheck();~// rootCheck();~g' /usr/lib/node_modules/yo/cli.js
+RUN sed -i 's~rootCheck();~// rootCheck();~g' /usr/lib/node_modules/yo/cli.js
 
 # sshd setup
 RUN mkdir /var/run/sshd
