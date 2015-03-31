@@ -24,7 +24,7 @@ RUN gem install sass compass
 RUN npm install -g cordova ionic
 
 # modify yeoman to run as root
-RUN sed -i 's~rootCheck();~// rootCheck();~g' /usr/lib/node_modules/yo/cli.js
+# RUN sed -i 's~rootCheck();~// rootCheck();~g' /usr/lib/node_modules/yo/cli.js
 
 # sshd setup
 RUN mkdir /var/run/sshd

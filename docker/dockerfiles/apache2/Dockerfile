@@ -28,6 +28,6 @@ ENV APACHE_RUN_USER www-data
 ENV APACHE_RUN_GROUP www-data
 ENV APACHE_LOG_DIR /data/log/apache2
 ADD error_reporting.ini /etc/php5/apache2/conf.d/
-ADD ../devbox/.bash_aliases /root/
+ADD .bash_aliases /root/
 
 CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
