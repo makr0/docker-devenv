@@ -8,7 +8,7 @@
 
     DocumentRoot /data/projects
     <Directory /data/projects>
-        Options       Indexes +FollowSymLinks +Includes MultiViews
+        Options       +Indexes +FollowSymLinks +Includes +MultiViews
         AllowOverride All
         Order         allow,deny
         Allow         from all

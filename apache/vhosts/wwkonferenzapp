@@ -8,7 +8,7 @@
 
     DocumentRoot /data/wwkonferenzapp/backend/web
     <Directory /data/wwkonferenzapp/backend/web>
-        Options       Indexes +FollowSymLinks +Includes MultiViews
+        Options       +Indexes +FollowSymLinks +Includes +MultiViews
         php_flag      safe_mode On
         AllowOverride All
         Order         allow,deny
@@ -129,7 +129,7 @@
 
     DocumentRoot /data/wwkonferenzapp/app/doc/
     <Directory /data/wwkonferenzapp/app/doc>
-       Options       FollowSymLinks
+       Options       FollowSymLinks Indexes
        AllowOverride All
        Order         allow,deny
        Allow         from all
@@ -144,6 +144,28 @@
     ErrorLog ${APACHE_LOG_DIR}/error.log
     CustomLog ${APACHE_LOG_DIR}/access.log combined
 </VirtualHost>
+<VirtualHost *:80>
+    ServerName doc.backend.konferenz-app.loc.int
+    ServerAdmin webmaster@localhost
+
+    DocumentRoot /data/wwkonferenzapp/backend/doc/api/html/
+    <Directory /data/wwkonferenzapp/backend/doc/api/html/>
+       Options       FollowSymLinks Indexes
+       AllowOverride All
+       Order         allow,deny
+       Allow         from all
+    </Directory>
+
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+
+    # Possible values include: debug, info, notice, warn, error, crit,
+    # alert, emerg.
+    LogLevel warn
+
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+
 
 # live urls
 ##############

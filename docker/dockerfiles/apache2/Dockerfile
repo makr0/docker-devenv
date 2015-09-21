@@ -6,6 +6,7 @@
 
 # Pull base image.
 FROM debian:oldstable
+#FROM debian:stable
 
 # Maintainer
 MAINTAINER mdt <mdt@wegewerk.com>
@@ -28,6 +29,8 @@ ENV APACHE_RUN_USER www-data
 ENV APACHE_RUN_GROUP www-data
 ENV APACHE_LOG_DIR /data/log/apache2
 ADD error_reporting.ini /etc/php5/apache2/conf.d/
+ADD envvars /etc/apache2/
+# ADD apache2.conf /etc/apache2/    # only needed if FROM debian:stable
 ADD .bash_aliases /root/
 
 CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]

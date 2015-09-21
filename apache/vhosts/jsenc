@@ -1,13 +1,13 @@
 ########################
-## d3-prototypes
+## static sites (random github checkouts)
 ########################
 
 <VirtualHost *:80>
-    ServerName d3.datavis.loc.int
+    ServerName jsencrypt-demo.loc.int
     ServerAdmin webmaster@localhost
 
-    DocumentRoot /data/datavis/d3
-    <Directory /data/datavis/d3>
+    DocumentRoot /data/jsencrypt-demo
+    <Directory /data/jsencrypt-demo>
         Options       +Indexes +FollowSymLinks +Includes +MultiViews
         AllowOverride All
         Order         allow,deny

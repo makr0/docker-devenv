@@ -14,7 +14,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y openssh-server \
 RUN locale-gen de_DE.UTF-8 && update-locale LANG=de_DE.UTF-8
 
 # install nodejs
-RUN curl -sL https://deb.nodesource.com/setup | bash - && DEBIAN_FRONTEND=noninteractive apt-get install -y nodejs
+RUN curl -sL https://deb.nodesource.com/setup_0.12 | bash - && DEBIAN_FRONTEND=noninteractive apt-get install -y nodejs
 
 # install all the hip build tools
 RUN npm install -g bower grunt-cli yo gulp
