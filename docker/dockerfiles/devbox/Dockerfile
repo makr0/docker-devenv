@@ -14,7 +14,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y openssh-server \
 RUN locale-gen de_DE.UTF-8 && update-locale LANG=de_DE.UTF-8
 
 # install nodejs
-RUN curl -sL https://deb.nodesource.com/setup | bash - && DEBIAN_FRONTEND=noninteractive apt-get install -y nodejs
+RUN curl -sL https://deb.nodesource.com/setup_4.x | bash - && DEBIAN_FRONTEND=noninteractive apt-get install -y nodejs
 
 # install composer and bower
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin/ --filename=composer
@@ -32,6 +32,8 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y mosh
 
 # pouchdb-dump-cli (Dump Couchdb Databases for loading in pouchDB)
 RUN npm install -g pouchdb-dump-cli
+
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y imagemagick
 
 # some dotfiles
 ADD .bash_aliases /root/

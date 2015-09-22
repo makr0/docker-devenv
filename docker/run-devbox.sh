@@ -6,6 +6,8 @@ docker run -d             `# ??` \
            -p 2222:22     `# ssh` \
            -p 8888:8888   `# local server` \
            -p 8889:8889   `# local server` \
+           -p 35729:35729 `# livereload server` \
+           -p 8100:8100   `# ionic serve default port` \
            --volumes-from data-container \
            --name devbox \
            -h devbox \

@@ -1,6 +1,6 @@
 #!/bin/sh
 docker stop data-container && docker rm data-container;
-docker run -v /mnt/sda1/docker-data-container/:/data \
-           -v /mnt/sda1/docker-config-container/:/config \
+docker run -v /home/vagrant/docker-data-container/:/data \
+           -v /home/vagrant/docker-config-container/:/config \
            --name data-container \
            busybox true

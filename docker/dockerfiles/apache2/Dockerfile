@@ -30,6 +30,7 @@ ENV APACHE_RUN_GROUP www-data
 ENV APACHE_LOG_DIR /data/log/apache2
 ADD error_reporting.ini /etc/php5/apache2/conf.d/
 ADD envvars /etc/apache2/
+
 # ADD apache2.conf /etc/apache2/    # only needed if FROM debian:stable
 ADD .bash_aliases /root/
 
