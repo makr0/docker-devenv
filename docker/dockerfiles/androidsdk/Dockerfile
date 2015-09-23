@@ -15,10 +15,10 @@ ADD .bash_aliases /root/
 ADD .gitconfig /root/
 
 # make sshd happy
-RUN mkdir /var/run/sshd
-RUN mkdir /root/.ssh && chmod 600 /root/.ssh
+RUN mkdir -p /root/.ssh 
 ADD sshd_config /etc/ssh/sshd_config
 ADD authorized_keys /root/.ssh/
+RUN chmod 600 -R /root/.ssh
 
 EXPOSE 22
 CMD ["/usr/sbin/sshd", "-D"]
