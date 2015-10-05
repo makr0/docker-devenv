@@ -5,4 +5,4 @@
 ./run-devbox.sh;
 ./run-couchdb.sh;
 #./run-babelext_box.sh;
-#./run-ionicdev.sh
+./run-androidsdk.sh;

@@ -33,7 +33,8 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y mosh
 # pouchdb-dump-cli (Dump Couchdb Databases for loading in pouchDB)
 RUN npm install -g pouchdb-dump-cli
 
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y imagemagick
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y graphicsmagick
+
 
 # some dotfiles
 ADD .bash_aliases /root/
