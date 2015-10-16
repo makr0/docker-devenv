@@ -23,7 +23,7 @@ echo "PATH=\$PATH:~/android-sdk-linux/tools:~/android-sdk-linux/platform-tools" 
 
 expect -c '
 set timeout -1   ;
-spawn /root/android-sdk-linux/tools/android update sdk -u --all --filter android-22,tools,platform-tools,build-tools
+spawn /root/android-sdk-linux/tools/android update sdk -u --all --filter android-22,tools,platform-tools,build-tools-23.0.1
 expect {
     "Do you accept the license" { exp_send "y\r" ; exp_continue }
     eof

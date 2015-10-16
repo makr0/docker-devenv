@@ -15,7 +15,7 @@ ADD .bash_aliases /root/
 ADD .gitconfig /root/
 
 # make sshd happy
-RUN mkdir -p /root/.ssh 
+RUN mkdir -p /root/.ssh
 ADD sshd_config /etc/ssh/sshd_config
 ADD authorized_keys /root/.ssh/
 RUN chmod 600 -R /root/.ssh
