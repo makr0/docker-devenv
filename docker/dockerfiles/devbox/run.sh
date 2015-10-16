@@ -11,5 +11,6 @@ docker run -d             `# ??` \
            --volumes-from data-container \
            --name devbox \
            -h devbox \
+           --link igmcouch \
            wwmdt/devbox
 
