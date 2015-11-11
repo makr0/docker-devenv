@@ -1,1 +1,1 @@
-dockerfiles/couchdb/run.sh
+dockerfiles/igmcouch/run.sh

@@ -18,13 +18,14 @@ RUN curl -sL https://deb.nodesource.com/setup_4.x | bash - && DEBIAN_FRONTEND=no
 
 # install composer and bower
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin/ --filename=composer
-RUN npm install -g bower grunt-cli yo gulp
+RUN npm install -g bower grunt-cli yo gulp grunt-init aglio
 RUN gem install sass compass
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y gitk git-gui
 
+
 # install cordova and ionic
-RUN npm install -g cordova ionic
+RUN npm install -g ionic cordova
 
 # install other Commandline Tools
 # mosh (the Mobile SHell)
@@ -34,6 +35,9 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y mosh
 RUN npm install -g pouchdb-dump-cli
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y graphicsmagick
+
+# aglio (the api-doc generation tool)
+# RUN npm install -g aglio
 
 
 # some dotfiles
