@@ -2,7 +2,7 @@
 #
 # VERSION               0.0.1
 
-FROM     wwmdt/devbox
+FROM     devenv_devbox
 MAINTAINER mdt "mdt@wegewerk.com"
 
 # sdk install script

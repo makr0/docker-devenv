@@ -1,1 +1,0 @@
-dockerfiles/samba/run.sh

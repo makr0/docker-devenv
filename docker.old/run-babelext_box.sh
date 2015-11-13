@@ -1,1 +1,0 @@
-dockerfiles/babelext_box/run.sh

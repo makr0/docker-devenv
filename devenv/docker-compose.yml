@@ -1,0 +1,53 @@
+devbox:
+  build: devbox
+  hostname: devbox
+  ports:
+    - "10.1.1.4:2222:22"
+    - "8888:8888"
+    - "8889:8889"
+    - "35729:35729"
+    - "8100:8100"
+  volumes_from:
+    - datacontainer
+  links:
+    - igmcouch
+
+androidbox:
+  build: androidsdk
+  hostname: androidsdk
+  ports:
+    - "2224:22"
+
+igmcouch:
+  build: igmcouch
+  ports:
+    - "5984:5984"
+  volumes_from:
+    - datacontainer
+
+apache:
+  build: apache2
+  hostname: webserver
+  ports:
+    - "10.1.1.4:80:80"
+  volumes_from:
+   - datacontainer
+  links:
+    - igmcouch
+  extra_hosts:
+    - "backend.konferenz-app.loc.int:10.1.1.4"
+
+samba:
+  build: samba
+  volumes_from:
+    - datacontainer
+  ports:
+    - "137-139:137-139"
+    - "445:445"
+
+datacontainer:
+  image: busybox
+  volumes:
+    - "/home/vagrant/dockerdata/:/data"
+    - "/home/vagrant/dockerconf/:/config"
+
