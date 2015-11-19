@@ -17,6 +17,8 @@ androidbox:
   hostname: androidsdk
   ports:
     - "2224:22"
+  volumes_from:
+    - datacontainer
 
 igmcouch:
   build: igmcouch
