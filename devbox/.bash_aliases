@@ -31,7 +31,7 @@ function prompt {
   local NO_COLOR="\[\e[0;0m\]"
 
 
-  PS1="$GREEN[\A] $CYAN\u@\h:$BLUE\w$YELLOW\$(parse_git_branch)$RED $ $NO_COLOR"
+  PS1="$GREEN[\A] $CYAN\u@\h:$GREEN\w$YELLOW\$(parse_git_branch)$RED $ $NO_COLOR"
   export PS1
 }
 
