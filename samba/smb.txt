@@ -1,0 +1,16 @@
+[global]
+  follow symlinks = yes
+  wide links = yes
+  unix extensions = no
+
+[data]
+  path = /data
+  comment = Die Daten im Datencontainer
+  read only = no
+  locking = no
+  force user = root
+  force group = root
+  guest ok = yes
+  map archive = no
+  map system = no
+  map hidden = no

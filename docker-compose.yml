@@ -1,0 +1,20 @@
+devbox:
+  build: devbox
+  hostname: devbox
+  ports:
+    - "10.1.1.4:2222:22"
+    - "10.1.1.4:8000-8001:8000-8001"
+    - "10.1.1.4:8100:8100"
+    - "10.1.1.4:3019:3019" # frontend prototypes
+    - "10.1.1.4:3000-3001:3000-3001" # frontend prototypes
+    - "10.1.1.4:35729:35729"
+  volumes:
+    - ..:/data
+
+samba:
+  build: samba
+  volumes:
+    - "..:/data"
+  ports:
+    - "137-139:137-139"
+    - "445:445"

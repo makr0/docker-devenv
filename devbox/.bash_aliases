@@ -19,8 +19,20 @@ alias gcm='git commit -m'
 
 parse_git_branch()
 {
-    git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1) /'
+    git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+}
+function prompt {
+  local GREEN="\[\e[0;32m\]"
+  local RED="\[\e[0;31m\]"
+  local CYAN="\[\e[0;36m\]"
+  local BLUE="\[\e[0;94m\]"
+  local DARK_BLUE="\[\e[0;34m\]"
+  local YELLOW="\[\e[0;33m\]"
+  local NO_COLOR="\[\e[0;0m\]"
+
+
+  PS1="$GREEN[\A] $CYAN\u@\h:$BLUE\w$YELLOW\$(parse_git_branch)$RED $ $NO_COLOR"
+  export PS1
 }
 
-export SAVE_PS1="$PS1"
-export PS1="$PS1\[\033[1;32m\]\$(parse_git_branch)\[\e[0m\]"
+prompt
