@@ -27,6 +27,10 @@ RUN npm install -g bower grunt-cli yo gulp
 ADD .bash_aliases /root/
 ADD .gitconfig /root/
 
+# add Install-Script for Android SDK
+ADD install_androidsdk.sh /root/
+RUN chmod +x /root/install_androidsdk.sh
+
 # make sshd happy
 RUN mkdir /var/run/sshd
 RUN mkdir /root/.ssh && chmod 600 /root/.ssh
