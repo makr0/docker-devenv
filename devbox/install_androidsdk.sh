@@ -18,12 +18,12 @@ tar -xzvf $ANDROID_SDK_FILENAME
 #sudo chown -R vagrant:vagrant /root/.android/
 
 echo "export ANDROID_HOME=~/android-sdk-linux" >> /root/.bashrc
-echo "export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64" >> /root/.bashrc
+echo "export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64" >> /root/.bashrc
 echo "PATH=\$PATH:~/android-sdk-linux/tools:~/android-sdk-linux/platform-tools" >> /root/.bashrc
 
 expect -c '
 set timeout -1   ;
-spawn /root/android-sdk-linux/tools/android update sdk -u --all --filter android-22,tools,platform-tools,build-tools-23.0.1
+spawn /root/android-sdk-linux/tools/android update sdk -u --all --filter android-23,tools,platform-tools,build-tools-23.0.3
 expect {
     "Do you accept the license" { exp_send "y\r" ; exp_continue }
     eof
